@@ -289,7 +289,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
              |     +--ro encapsulation?        identityref
              +--ro tp-state?             enumeration
 
-
    The L2-topology module augments the 'ietf-network' and 'ietf-network-
    topology' YANG modules as follows:
 
@@ -327,6 +326,7 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       is not within the scope of the Layer-2 Topology YANG module;
       dedicated YANG modules should be used instead (e.g.,
       [I-D.ietf-trill-yang]).
+
 
 
 
@@ -592,7 +592,8 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
     identity pbb {
       base eth-encapsulation-type;
       description
-        "PBB encapsulation.";
+        "Provider-backbone-bridging (PBB) encapsulation.The
+         PBB functions are developed in IEEE 802.1ah";
     }
 
     identity trill {
@@ -609,7 +610,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
     identity vxlan {
       base eth-encapsulation-type;
-      description
 
 
 
@@ -618,6 +618,7 @@ Dong, et al.             Expires April 17, 2020                [Page 11]
 Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
 
+      description
         "VXLAN MAC in UDP encapsulation.";
     }
 
@@ -665,7 +666,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
         }
         leaf-list management-address {
           type inet:ip-address;
-          description "System management address.";
 
 
 
@@ -674,6 +674,7 @@ Dong, et al.             Expires April 17, 2020                [Page 12]
 Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
 
+          description "System management address.";
         }
         leaf sys-mac-address {
           type yang:mac-address;
@@ -721,7 +722,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
             "List of Shared Risk Link Groups
              this link belongs to.";
           reference
-            "RFC 4202: Routing Extensions in Support of
 
 
 
@@ -730,6 +730,7 @@ Dong, et al.             Expires April 17, 2020                [Page 13]
 Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
 
+            "RFC 4202: Routing Extensions in Support of
             Generalized Multi-Protocol Label Switching
             (GMPLS)";
         }
@@ -777,7 +778,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
                default "false";
                description "Defines whether lag is support or not.";
             }
-            leaf-list member-link-tp {
 
 
 
@@ -786,6 +786,7 @@ Dong, et al.             Expires April 17, 2020                [Page 14]
 Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
 
+            leaf-list member-link-tp {
                 when "../lag = 'true'" {
                 description
                "Relevant only when the lag interface is supported.";
@@ -833,7 +834,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
               }
               leaf vlan-name {
                 type string {
-                length "1..31";
 
 
 
@@ -842,6 +842,7 @@ Dong, et al.             Expires April 17, 2020                [Page 15]
 Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
 
+                length "1..31";
                 }
                 description "VLAN name.";
               }
@@ -889,7 +890,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
               type yang:phys-address;
               description "Interface Layer 2 address.";
             }
-
 
 
 
