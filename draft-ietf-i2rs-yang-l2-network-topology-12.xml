@@ -102,7 +102,7 @@
       </address>
     </author>
 
-    <date year="2019"/>
+    <date year="2019" />
 
     <abstract>
       <t>This document defines a YANG data model for Layer 2 network
@@ -125,40 +125,34 @@
 
   <middle>
     <section title="Introduction">
-      <t><xref target="RFC8345"/> defines the YANG <xref target="RFC6020"/>
-      <xref target="RFC7950"/> data models of the abstract (generic) network
-      and network topology. Such models can be augmented with
-      technology-specific details to build more specific topology models.</t>
+      <t><xref target="RFC8345"></xref> defines the YANG <xref
+      target="RFC6020"></xref> <xref target="RFC7950"></xref> data models of
+      the abstract (generic) network and network topology. Such models can be
+      augmented with technology-specific details to build more specific
+      topology models.</t>
 
       <t>This document defines the YANG data model for Layer 2 (L2) network
       topologies by augmenting the generic network (Section 6.1 of <xref
-      target="RFC8345"/>) and network topology (Section 6.2 of <xref
-      target="RFC8345"/>) data models with L2-specific topology attributes. A
-      sample example is provided in <xref target="ex"/>.</t>
+      target="RFC8345"></xref>) and network topology (Section 6.2 of <xref
+      target="RFC8345"></xref>) data models with L2-specific topology
+      attributes. A sample example is provided in <xref
+      target="ex"></xref>.</t>
 
       <t>This document uses the common YANG types defined in <xref
-      target="RFC6991"/> and adopts the Network Management Datastore
-      Architecture (NMDA <xref target="RFC8342"/>).</t>
+      target="RFC6991"></xref> and adopts the Network Management Datastore
+      Architecture (NMDA <xref target="RFC8342"></xref>).</t>
 
       <t>The terminology for describing YANG modules is defined in <xref
-      target="RFC7950"/>. The meanings of the symbols used in the tree diagram
-      are defined in <xref target="RFC8340"/>.</t>
+      target="RFC7950"></xref>. The meanings of the symbols used in the tree
+      diagram are defined in <xref target="RFC8340"></xref>.</t>
     </section>
 
     <section title="Terminology">
       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
       "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
       "OPTIONAL" in this document are to be interpreted as described in BCP 14
-      <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when,
-      they appear in all capitals, as shown here.</t>
-    </section>
-
-    <section title="Definitions and Abbreviations">
-      <t hangText="PBB:">Provider Backbone Bridging [IEEE802.1ah].</t>
-
-      <t hangText="QinQ:">802.1Q-in-802.1Q [IEEE802.1ad].</t>
-
-      <t hangText="LLDP:">Link Layer Discovery Protocol [IEEE802.1AB].</t>
+      <xref target="RFC2119"></xref> <xref target="RFC8174"></xref> when, and
+      only when, they appear in all capitals, as shown here.</t>
     </section>
 
     <section title="Layer 2 Topology Model">
@@ -168,17 +162,19 @@
       L2 network topologies.</t>
 
       <t>The relationship between the Layer 2 topology module and the generic
-      network and network topology module is shown in <xref target="dia"/>. In
-      order to represent a Layer 2 network topology, the generic network and
-      topology models are augmented with Layer-2 specific information, such as
-      the identifiers, descriptions, attributes and states of the Layer-2
-      networks, nodes, links and termination points. Some of the information
-      may be collected via Link Layer Discovery Protocol (LLDP) <xref
-      target="IEEE802.1AB"/> or other Layer-2 protocols, and some of them may
-      be locally configured.</t>
+      network and network topology module is shown in <xref
+      target="dia"></xref>. In order to represent a Layer 2 network topology,
+      the generic network and topology models are augmented with Layer-2
+      specific information, such as the identifiers, identities (e.g.,
+      Provider Backbone Bridging <xref target="IEEE802.1ah"></xref> or
+      802.1Q-in-802.1Q <xref target="IEEE802.1ad"></xref>), attributes, and
+      states of the Layer-2 networks, nodes, links, and termination points.
+      Some of the information may be collected via Link Layer Discovery
+      Protocol (LLDP) <xref target="IEEE802.1AB"></xref> or other Layer-2
+      protocols, and some of them may be locally configured.</t>
 
-      <t><figure anchor="dia" title="L2-topology YANG Module Structure">
-          <artwork align="center">              +---------------------+
+      <t><figure anchor="dia" title="Layer-2 Topology YANG Module Structure">
+          <artwork align="center"><![CDATA[              +---------------------+
               |    ietf-network     |
               +----------^----------+
                          |
@@ -191,14 +187,14 @@
               +----------^----------+
               |   ietf-l2-topology  |
               +---------------------+
-</artwork>
+]]></artwork>
         </figure></t>
 
       <t>The structure of "ietf-l2-topology" YANG module is depicted in the
       following tree diagram:</t>
 
       <t><figure>
-          <artwork>module: ietf-l2-topology
+          <artwork><![CDATA[module: ietf-l2-topology
   augment /nw:networks/nw:network/nw:network-types:
     +--rw l2-network!
   augment /nw:networks/nw:network:
@@ -249,7 +245,7 @@
     +---n l2-node-event
     |  +--ro event-type?           l2-network-event-type
     |  +--ro node-ref?             leafref
-    |  +--ro network-ref?          -&gt; /nw:networks/network/network-id
+    |  +--ro network-ref?          -> /nw:networks/network/network-id
     |  +--ro l2-network!
     |  +--ro l2-node-attributes
     |     +--ro name?                 string
@@ -261,7 +257,7 @@
     +---n l2-link-event
     |  +--ro event-type?           l2-network-event-type
     |  +--ro link-ref?             leafref
-    |  +--ro network-ref?          -&gt; /nw:networks/network/network-id
+    |  +--ro network-ref?          -> /nw:networks/network/network-id
     |  +--ro l2-network!
     |  +--ro l2-link-attributes
     |     +--ro name?    string
@@ -274,7 +270,7 @@
        +--ro tp-ref?                            leafref
        +--ro node-ref?                          leafref
        +--ro network-ref?
-       |       -&gt; /nw:networks/network/network-id
+       |       -> /nw:networks/network/network-id
        +--ro l2-network!
        +--ro l2-termination-point-attributes
           +--ro description?          string
@@ -299,17 +295,17 @@
           |  +--:(legacy)
           |     +--ro layer-2-address?      yang:phys-address
           |     +--ro encapsulation?        identityref
-          +--ro tp-state?             enumeration</artwork>
+          +--ro tp-state?             enumeration]]></artwork>
         </figure></t>
 
-      <t>The L2-topology module augments the 'ietf-network' and
+      <t>The Layer-2 topology YANG module augments the 'ietf-network' and
       'ietf-network-topology' YANG modules as follows:</t>
 
       <t><list style="symbols">
           <t>A new network type "l2-network-type" is introduced. This is
           represented by a container object, and is inserted under the
           "network-types" container of the generic 'ietf-network' module
-          defined in <xref target="RFC8345"/>.</t>
+          defined in <xref target="RFC8345"></xref>.</t>
 
           <t>Additional network attributes are introduced in a grouping
           "l2-network-attributes", which augments the "network" list of the
@@ -324,10 +320,10 @@
 
           <t>Additional data objects for Layer-2 termination points are
           introduced by augmenting the "termination-point" list of the
-          'ietf-network-topology' module defined in <xref target="RFC8345"/>.
-          New objects include Layer-2 termination point descriptions, Layer-2
-          termination point type specific attributes and Layer-2 termination
-          point states.</t>
+          'ietf-network-topology' module defined in <xref
+          target="RFC8345"></xref>. New objects include Layer-2 termination
+          point descriptions, Layer-2 termination point type specific
+          attributes and Layer-2 termination point states.</t>
 
           <t>Links in the 'ietf-network-topology' module are augmented as well
           with a set of Layer-2 parameters, allowing to associate a link with
@@ -339,19 +335,20 @@
           or configuring advanced L2 technology-specific attributes is not
           within the scope of the Layer-2 Topology YANG module; dedicated YANG
           modules should be used instead (e.g., <xref
-          target="I-D.ietf-trill-yang"/>).</t>
+          target="I-D.ietf-trill-yang"></xref>).</t>
         </list></t>
     </section>
 
     <section title="Layer 2 Topology YANG Module">
-      <t>This module uses the common YANG types defined in <xref
-      target="RFC6991"/><xref target="RFC7224"/><xref target="IEEE802.1Qcp"/>
-      and types defined in <xref target="RFC8345"/>, and it references <xref
-      target="RFC4761"/><xref target="RFC4762"/><xref target="RFC6325"/><xref
-      target="RFC6326"/><xref target="RFC7348"/><xref target="RFC4202"/>.</t>
+      <t>This module uses types defined in <xref target="RFC6991"></xref>,
+      <xref target="RFC7224"></xref>, <xref target="IEEE802.1Qcp"></xref>, and
+      <xref target="RFC8345"></xref>. It also references <xref
+      target="RFC4761"></xref><xref target="RFC4762">, </xref><xref
+      target="RFC6325">, </xref><xref target="RFC6326">, </xref><xref
+      target="RFC7348">, </xref>, and <xref target="RFC4202"></xref>.</t>
 
       <t><figure>
-          <artwork>&lt;CODE BEGINS&gt; file "ietf-l2-topology@2019-10-15.yang"
+          <artwork><![CDATA[<CODE BEGINS> file "ietf-l2-topology@2019-10-15.yang"
 module ietf-l2-topology {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-l2-topology";
@@ -392,22 +389,22 @@ module ietf-l2-topology {
   organization
     "IETF I2RS (Interface to the Routing System) Working Group";
   contact
-    "WG Web:   &lt;http://tools.ietf.org/wg/i2rs/&gt;
-     WG List:  &lt;mailto:i2rs@ietf.org&gt;
+    "WG Web:   <http://tools.ietf.org/wg/i2rs/>
+     WG List:  <mailto:i2rs@ietf.org>
      Editor:    Jie Dong
-               &lt;mailto:jie.dong@huawei.com&gt;
+               <mailto:jie.dong@huawei.com>
 
      Editor:    Xiugang Wei
-               &lt;mailto:weixiugang@huawei.com&gt;
+               <mailto:weixiugang@huawei.com>
 
      Editor:    Qin Wu
-               &lt;mailto:bill.wu@huawei.com&gt;
+               <mailto:bill.wu@huawei.com>
 
      Editor:    Mohamed Boucadair
-               &lt;mailto:mohamed.boucadair@orange.com&gt;
+               <mailto:mohamed.boucadair@orange.com>
 
      Editor:   Anders Liu
-               &lt;andersliu@tencent.com&gt;";
+               <andersliu@tencent.com>";
   description
     "This module defines a basic model for
      the layer-2 topology of a network.
@@ -455,7 +452,7 @@ module ietf-l2-topology {
       base flag-identity;
     }
     description
-      "Base type for l2 flags";
+      "Base type for L2 flags.";
   }
 
   typedef node-flag-type {
@@ -463,7 +460,7 @@ module ietf-l2-topology {
       base flag-identity;
     }
     description
-      "Node flag attributes";
+      "Node flag attributes.";
   }
 
   typedef link-flag-type {
@@ -471,7 +468,7 @@ module ietf-l2-topology {
       base flag-identity;
     }
     description
-      "Link flag attributes";
+      "Link flag attributes.";
   }
 
   typedef l2-network-event-type {
@@ -479,24 +476,24 @@ module ietf-l2-topology {
       enum add {
         value 0;
         description
-          "An L2 node or link or termination-point
-           has been added";
+          "A Layer-2 node or link or termination-point
+           has been added.";
       }
       enum remove {
         value 1;
         description
-          "An L2 node or link or termination-point
-           has been removed";
+          "A Layer-2 node or link or termination-point
+           has been removed.";
       }
       enum update {
         value 2;
         description
-          "An L2 node or link or termination-point
-           has been updated";
+          "A Layer-2 node or link or termination-point
+           has been updated.";
       }
     }
     description
-      "l2 network event type for notifications";
+      "Layer-2 network event type for notifications.";
   }
 
   // l2-topology-event-type     
@@ -1008,32 +1005,32 @@ module ietf-l2-topology {
   }
 }
 
-&lt;CODE ENDS&gt;</artwork>
+<CODE ENDS>]]></artwork>
         </figure></t>
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
       <t>This document requests IANA to register the following URIs in the
       "ns" subregistry within the "IETF XML Registry" <xref
-      target="RFC3688"/>:</t>
+      target="RFC3688"></xref>:</t>
 
       <t><figure>
-          <artwork>   URI: urn:ietf:params:xml:ns:yang:ietf-l2-topology 
+          <artwork><![CDATA[   URI: urn:ietf:params:xml:ns:yang:ietf-l2-topology 
    Registrant Contact: The IESG.
    XML: N/A; the requested URI is an XML namespace.
 
    URI: urn:ietf:params:xml:ns:yang:ietf-l2-topology-state
    Registrant Contact: The IESG.
    XML: N/A; the requested URI is an XML namespace.
-</artwork>
+]]></artwork>
         </figure></t>
 
       <t>This document requests IANA to register the following YANG modules in
-      the "YANG Module Names" subregistry <xref target="RFC6020"/> within the
-      "YANG Parameters" registry.</t>
+      the "YANG Module Names" subregistry <xref target="RFC6020"></xref>
+      within the "YANG Parameters" registry.</t>
 
       <figure>
-        <artwork>  name: ietf-l2-topology
+        <artwork><![CDATA[  name: ietf-l2-topology
   namespace: urn:ietf:params:xml:ns:yang:ietf-l2-topology
   prefix: l2t
   reference: RFC XXXX
@@ -1042,10 +1039,10 @@ module ietf-l2-topology {
   namespace: urn:ietf:params:xml:ns:yang:ietf-l2-topology-state
   prefix: l2t-s
   reference: RFC XXXX
-</artwork>
+]]></artwork>
       </figure>
 
-      <t/>
+      <t></t>
 
       <t>These modules are not maintained by IANA.</t>
     </section>
@@ -1053,17 +1050,17 @@ module ietf-l2-topology {
     <section anchor="Security" title="Security Considerations">
       <t>The YANG module specified in this document defines a schema for data
       that is designed to be accessed via network management protocols such as
-      NETCONF <xref target="RFC6241"/> or RESTCONF <xref target="RFC8040"/>.
-      The lowest NETCONF layer is the secure transport layer, and the
-      mandatory-to-implement secure transport is Secure Shell (SSH) <xref
-      target="RFC6242"/>. The lowest RESTCONF layer is HTTPS, and the
-      mandatory-to-implement secure transport is TLS <xref
-      target="RFC8446"/>.</t>
+      NETCONF <xref target="RFC6241"></xref> or RESTCONF <xref
+      target="RFC8040"></xref>. The lowest NETCONF layer is the secure
+      transport layer, and the mandatory-to-implement secure transport is
+      Secure Shell (SSH) <xref target="RFC6242"></xref>. The lowest RESTCONF
+      layer is HTTPS, and the mandatory-to-implement secure transport is TLS
+      <xref target="RFC8446"></xref>.</t>
 
       <t>The Network Configuration Access Control Model (NACM) <xref
-      target="RFC8341"/> provides the means to restrict access for particular
-      NETCONF or RESTCONF users to a preconfigured subset of all available
-      NETCONF or RESTCONF protocol operations and content.</t>
+      target="RFC8341"></xref> provides the means to restrict access for
+      particular NETCONF or RESTCONF users to a preconfigured subset of all
+      available NETCONF or RESTCONF protocol operations and content.</t>
 
       <t>In general, Layer 2 network topologies are system-controlled and
       provide ephemeral topology information. In an NMDA-complient server,
@@ -1112,7 +1109,7 @@ module ietf-l2-topology {
           attributes, such as the maximum-frame-size.</t>
         </list></t>
 
-      <t/>
+      <t></t>
     </section>
 
     <section title="Acknowledgements">
@@ -1182,13 +1179,13 @@ module ietf-l2-topology {
           Discovery</title>
 
           <author>
-            <organization/>
+            <organization></organization>
           </author>
 
-          <date day="11" month="March" year="2016"/>
+          <date day="11" month="March" year="2016" />
         </front>
 
-        <seriesInfo name="IEEE" value="Std 802.1AB-2016"/>
+        <seriesInfo name="IEEE" value="Std 802.1AB-2016" />
       </reference>
 
       <reference anchor="IEEE802.1Qcp">
@@ -1197,13 +1194,13 @@ module ietf-l2-topology {
           Model</title>
 
           <author>
-            <organization/>
+            <organization></organization>
           </author>
 
-          <date day="14" month="September" year="2018"/>
+          <date day="14" month="September" year="2018" />
         </front>
 
-        <seriesInfo name="IEEE" value="Std 802.1Qcp-2018"/>
+        <seriesInfo name="IEEE" value="Std 802.1Qcp-2018" />
       </reference>
 
       <reference anchor="IEEE802.1ad">
@@ -1212,13 +1209,13 @@ module ietf-l2-topology {
           Bridges</title>
 
           <author>
-            <organization/>
+            <organization></organization>
           </author>
 
-          <date month="May" year="2006"/>
+          <date month="May" year="2006" />
         </front>
 
-        <seriesInfo name="IEEE" value="Std 802.1ad-2005"/>
+        <seriesInfo name="IEEE" value="Std 802.1ad-2005" />
       </reference>
 
       <reference anchor="IEEE802.1ah">
@@ -1227,13 +1224,13 @@ module ietf-l2-topology {
           Bridges</title>
 
           <author>
-            <organization/>
+            <organization></organization>
           </author>
 
-          <date day="14" month="August" year="2008"/>
+          <date day="14" month="August" year="2008" />
         </front>
 
-        <seriesInfo name="IEEE" value="Std 802.1ah-2008"/>
+        <seriesInfo name="IEEE" value="Std 802.1ah-2008" />
       </reference>
     </references>
 
@@ -1242,11 +1239,11 @@ module ietf-l2-topology {
       two modules, 'ietf-network' and 'ietf-network-topology', that are
       designed to be used in conjunction with implementations that support the
       Network Management Datastore Architecture (NMDA) defined in <xref
-      target="RFC8342"/>. In order to allow implementations to use the model
-      even in cases when NMDA is not supported, a set of companion modules
-      have been defined that represent a state model of networks and network
-      topologies, 'ietf-network-state' and 'ietf-network-topology-state',
-      respectively.</t>
+      target="RFC8342"></xref>. In order to allow implementations to use the
+      model even in cases when NMDA is not supported, a set of companion
+      modules have been defined that represent a state model of networks and
+      network topologies, 'ietf-network-state' and
+      'ietf-network-topology-state', respectively.</t>
 
       <t>In order to be able to use the model for layer 2 topologies defined
       in this document in conjunction with non-NMDA compliant implementations,
@@ -1266,7 +1263,7 @@ module ietf-l2-topology {
       modules, the YANG tree is not depicted separately.</t>
 
       <t><figure>
-          <artwork>&lt;CODE BEGINS&gt; file "ietf-l2-topology-state@2019-06-04.yang"
+          <artwork><![CDATA[<CODE BEGINS> file "ietf-l2-topology-state@2019-06-04.yang"
 module ietf-l2-topology-state {
     yang-version 1.1;
     namespace "urn:ietf:params:xml:ns:yang:ietf-l2-topology-state";
@@ -1293,18 +1290,18 @@ module ietf-l2-topology-state {
     organization
       "IETF I2RS (Interface to the Routing System) Working Group";
     contact
-      "WG Web:   &lt;http://tools.ietf.org/wg/i2rs/&gt;
-       WG List:  &lt;mailto:i2rs@ietf.org&gt;
+      "WG Web:   <http://tools.ietf.org/wg/i2rs/>
+       WG List:  <mailto:i2rs@ietf.org>
        Editor:    Jie Dong
-                 &lt;mailto:jie.dong@huawei.com&gt;
+                 <mailto:jie.dong@huawei.com>
        Editor:    Xiugang Wei
-                 &lt;mailto:weixiugang@huawei.com&gt;
+                 <mailto:weixiugang@huawei.com>
        Editor:    Qin Wu
-                 &lt;mailto:bill.wu@huawei.com&gt;
+                 <mailto:bill.wu@huawei.com>
        Editor:    Mohamed Boucadair
-                 &lt;mailto:mohamed.boucadair@orange.com&gt;
+                 <mailto:mohamed.boucadair@orange.com>
        Editor:   Anders Liu
-                 &lt;andersliu@tencent.com&gt;";
+                 <andersliu@tencent.com>";
     
     description 
       " This module defines a model for Layer 2 Network Topology
@@ -1430,27 +1427,27 @@ module ietf-l2-topology-state {
       uses l2t:l2-termination-point-attributes;
     }         
 }  // module l2-topology-state
-&lt;CODE ENDS&gt;
-</artwork>
+<CODE ENDS>
+]]></artwork>
         </figure></t>
     </section>
 
     <section anchor="ex" title="An Example">
       <t>This section contains an example of an instance data tree in JSON
-      encoding <xref target="RFC7951"/>. The example instantiates "ietf-l2-
-      topology" for the topology that is depicted in the following diagram.
-      There are three nodes: D1, D2, and D3. D1 has three termination points:
-      1-0-1, 1-2-1, and 1-3-1. D2 has three termination points as well: 2-1-1,
-      2-0-1, and 2-3-1. D3 has two termination points: 3-1-1 and 3-2-1. In
-      addition, there are six links, two between each pair of nodes, with one
-      going in each direction.</t>
+      encoding <xref target="RFC7951"></xref>. The example instantiates
+      "ietf-l2- topology" for the topology that is depicted in the following
+      diagram. There are three nodes: D1, D2, and D3. D1 has three termination
+      points: 1-0-1, 1-2-1, and 1-3-1. D2 has three termination points as
+      well: 2-1-1, 2-0-1, and 2-3-1. D3 has two termination points: 3-1-1 and
+      3-2-1. In addition, there are six links, two between each pair of nodes,
+      with one going in each direction.</t>
 
       <t><figure>
-          <artwork>                +------------+                   +------------+
+          <artwork><![CDATA[                +------------+                   +------------+
                 |     D1     |                   |     D2     |
                /-\          /-\                 /-\          /-\
-               | | 1-0-1    | |----------------&gt;| | 2-1-1    | |
-               | |    1-2-1 | |&lt;----------------| |    2-0-1 | |
+               | | 1-0-1    | |---------------->| | 2-1-1    | |
+               | |    1-2-1 | |<----------------| |    2-0-1 | |
                \-/  1-3-1   \-/                 \-/  2-3-1   \-/
                 |   /----\   |                   |   /----\   |
                 +---|    |---+                   +---|    |---+
@@ -1461,13 +1458,13 @@ module ietf-l2-topology-state {
                      |  |       +------------+        |  |
                      |  |       |     D3     |        |  |
                      |  |      /-\          /-\       |  |
-                     |  +-----&gt;| | 3-1-1    | |-------+  |
-                     +---------| |    3-2-1 | |&lt;---------+
+                     |  +----->| | 3-1-1    | |-------+  |
+                     +---------| |    3-2-1 | |<---------+
                                \-/          \-/
                                 |            |
                                 +------------+
 
-                   Figure 2. A Network Topology Example</artwork>
+                   Figure 2. A Network Topology Example]]></artwork>
         </figure></t>
 
       <t>The corresponding instance data tree is depicted as below. Note that
@@ -1475,7 +1472,7 @@ module ietf-l2-topology-state {
       limitation of RFCs.</t>
 
       <t><figure>
-          <artwork> {
+          <artwork><![CDATA[ {
      "ietf-network:networks": {
        "network": [
          {
@@ -1654,7 +1651,7 @@ module ietf-l2-topology-state {
          }
        ]
      }
-   }</artwork>
+   }]]></artwork>
         </figure></t>
     </section>
   </back>

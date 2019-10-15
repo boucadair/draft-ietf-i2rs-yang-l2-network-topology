@@ -77,15 +77,14 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   3.  Definitions and Abbreviations . . . . . . . . . . . . . . . .   3
-   4.  Layer 2 Topology Model  . . . . . . . . . . . . . . . . . . .   3
-   5.  Layer 2 Topology YANG Module  . . . . . . . . . . . . . . . .   7
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  21
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  21
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  23
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  23
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  23
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  25
+   3.  Layer 2 Topology Model  . . . . . . . . . . . . . . . . . . .   3
+   4.  Layer 2 Topology YANG Module  . . . . . . . . . . . . . . . .   7
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  20
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  21
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  22
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  23
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  23
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  24
    Appendix A.  Companion YANG Module for Non-NMDA Compliant
                 Implementations  . . . . . . . . . . . . . . . . . .  26
    Appendix B.  An Example . . . . . . . . . . . . . . . . . . . . .  30
@@ -104,8 +103,9 @@ Table of Contents
    models with L2-specific topology attributes.  A sample example is
    provided in Appendix B.
 
-
-
+   This document uses the common YANG types defined in [RFC6991] and
+   adopts the Network Management Datastore Architecture (NMDA
+   [RFC8342]).
 
 
 
@@ -113,10 +113,6 @@ Dong, et al.             Expires April 17, 2020                 [Page 2]
 
 Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
-
-   This document uses the common YANG types defined in [RFC6991] and
-   adopts the Network Management Datastore Architecture (NMDA
-   [RFC8342]).
 
    The terminology for describing YANG modules is defined in [RFC7950].
    The meanings of the symbols used in the tree diagram are defined in
@@ -130,15 +126,7 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
    14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Definitions and Abbreviations
-
-   Provider Backbone Bridging [IEEE802.1ah].
-
-   802.1Q-in-802.1Q [IEEE802.1ad].
-
-   Link Layer Discovery Protocol [IEEE802.1AB].
-
-4.  Layer 2 Topology Model
+3.  Layer 2 Topology Model
 
    The Layer 2 network topology YANG module is designed to be generic
    and applicable to Layer 2 networks built with different L2
@@ -149,26 +137,12 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
    network and network topology module is shown in Figure 1.  In order
    to represent a Layer 2 network topology, the generic network and
    topology models are augmented with Layer-2 specific information, such
-   as the identifiers, descriptions, attributes and states of the
-   Layer-2 networks, nodes, links and termination points.  Some of the
-   information may be collected via Link Layer Discovery Protocol (LLDP)
-   [IEEE802.1AB] or other Layer-2 protocols, and some of them may be
-   locally configured.
-
-
-
-
-
-
-
-
-
-
-
-Dong, et al.             Expires April 17, 2020                 [Page 3]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
+   as the identifiers, identities (e.g., Provider Backbone Bridging
+   [IEEE802.1ah] or 802.1Q-in-802.1Q [IEEE802.1ad]), attributes, and
+   states of the Layer-2 networks, nodes, links, and termination points.
+   Some of the information may be collected via Link Layer Discovery
+   Protocol (LLDP) [IEEE802.1AB] or other Layer-2 protocols, and some of
+   them may be locally configured.
 
                                  +---------------------+
                                  |    ietf-network     |
@@ -184,10 +158,17 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
                                  |   ietf-l2-topology  |
                                  +---------------------+
 
-                Figure 1: L2-topology YANG Module Structure
+             Figure 1: Layer-2 Topology YANG Module Structure
 
    The structure of "ietf-l2-topology" YANG module is depicted in the
    following tree diagram:
+
+
+
+Dong, et al.             Expires April 17, 2020                 [Page 3]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
 
    module: ietf-l2-topology
      augment /nw:networks/nw:network/nw:network-types:
@@ -218,14 +199,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
           +--rw (l2-termination-point-type)?
           |  +--:(ethernet)
           |  |  +--rw mac-address?          yang:mac-address
-
-
-
-Dong, et al.             Expires April 17, 2020                 [Page 4]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
           |  |  +--rw eth-encapsulation?    identityref
           |  |  +--rw lag?                  boolean
           |  |  +--rw member-link-tp*       leafref
@@ -245,6 +218,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
           +--ro tp-state?             enumeration
 
      notifications:
+
+
+
+Dong, et al.             Expires April 17, 2020                 [Page 4]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
        +---n l2-node-event
        |  +--ro event-type?           l2-network-event-type
        |  +--ro node-ref?             leafref
@@ -274,14 +255,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
           +--ro node-ref?                          leafref
           +--ro network-ref?
           |       -> /nw:networks/network/network-id
-
-
-
-Dong, et al.             Expires April 17, 2020                 [Page 5]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
           +--ro l2-network!
           +--ro l2-termination-point-attributes
              +--ro description?          string
@@ -301,6 +274,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
              |  |  +--ro qinq* [svlan-id cvlan-id] {QinQ}?
              |  |  |  +--ro svlan-id    dot1q-types:vlanid
              |  |  |  +--ro cvlan-id    dot1q-types:vlanid
+
+
+
+Dong, et al.             Expires April 17, 2020                 [Page 5]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
              |  |  +--ro vxlan {VXLAN}?
              |  |     +--ro vni-id?   vni
              |  +--:(legacy)
@@ -308,8 +289,8 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
              |     +--ro encapsulation?        identityref
              +--ro tp-state?             enumeration
 
-   The L2-topology module augments the 'ietf-network' and 'ietf-network-
-   topology' YANG modules as follows:
+   The Layer-2 topology YANG module augments the 'ietf-network' and
+   'ietf-network-topology' YANG modules as follows:
 
    o  A new network type "l2-network-type" is introduced.  This is
       represented by a container object, and is inserted under the
@@ -330,14 +311,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
    o  Additional data objects for Layer-2 termination points are
       introduced by augmenting the "termination-point" list of the
       'ietf-network-topology' module defined in [RFC8345].  New objects
-
-
-
-Dong, et al.             Expires April 17, 2020                 [Page 6]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
       include Layer-2 termination point descriptions, Layer-2
       termination point type specific attributes and Layer-2 termination
       point states.
@@ -354,11 +327,22 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       dedicated YANG modules should be used instead (e.g.,
       [I-D.ietf-trill-yang]).
 
-5.  Layer 2 Topology YANG Module
 
-   This module uses the common YANG types defined in
-   [RFC6991][RFC7224][IEEE802.1Qcp] and types defined in [RFC8345], and
-   it references [RFC4761][RFC4762][RFC6325][RFC6326][RFC7348][RFC4202].
+
+
+
+
+
+Dong, et al.             Expires April 17, 2020                 [Page 6]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
+4.  Layer 2 Topology YANG Module
+
+   This module uses types defined in [RFC6991], [RFC7224],
+   [IEEE802.1Qcp], and [RFC8345].  It also references [RFC4761],
+   [RFC4762], [RFC6325], [RFC6326], [RFC7348], and [RFC4202].
 
 <CODE BEGINS> file "ietf-l2-topology@2019-10-15.yang"
 module ietf-l2-topology {
@@ -386,14 +370,6 @@ module ietf-l2-topology {
     reference
       "Section 3 of RFC 6991";
   }
-
-
-
-Dong, et al.             Expires April 17, 2020                 [Page 7]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
   import iana-if-type {
     prefix ift;
     reference
@@ -410,6 +386,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
     "IETF I2RS (Interface to the Routing System) Working Group";
   contact
     "WG Web:   <http://tools.ietf.org/wg/i2rs/>
+
+
+
+Dong, et al.             Expires April 17, 2020                 [Page 7]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
      WG List:  <mailto:i2rs@ietf.org>
      Editor:    Jie Dong
                <mailto:jie.dong@huawei.com>
@@ -443,13 +427,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
      RFC XXXX: A YANG Data Model for Layer-2 Network Topologies
      see the RFC itself for full legal notices.";
 
-
-
-Dong, et al.             Expires April 17, 2020                 [Page 8]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
   revision 2019-10-15 {
     description
       "Initial revision";
@@ -465,6 +442,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
     type uint32 {
       range "1..16777215";
     }
+
+
+
+Dong, et al.             Expires April 17, 2020                 [Page 8]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
     description
       "VxLAN Network Identifier";
     reference
@@ -479,7 +464,7 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       base flag-identity;
     }
     description
-      "Base type for l2 flags";
+      "Base type for L2 flags.";
   }
 
   typedef node-flag-type {
@@ -487,7 +472,7 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       base flag-identity;
     }
     description
-      "Node flag attributes";
+      "Node flag attributes.";
   }
 
   typedef link-flag-type {
@@ -495,9 +480,24 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       base flag-identity;
     }
     description
-      "Link flag attributes";
+      "Link flag attributes.";
   }
 
+  typedef l2-network-event-type {
+    type enumeration {
+      enum add {
+        value 0;
+        description
+          "A Layer-2 node or link or termination-point
+           has been added.";
+      }
+      enum remove {
+        value 1;
+        description
+          "A Layer-2 node or link or termination-point
+           has been removed.";
+      }
+      enum update {
 
 
 
@@ -506,29 +506,14 @@ Dong, et al.             Expires April 17, 2020                 [Page 9]
 Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
 
-  typedef l2-network-event-type {
-    type enumeration {
-      enum add {
-        value 0;
-        description
-          "An L2 node or link or termination-point
-           has been added";
-      }
-      enum remove {
-        value 1;
-        description
-          "An L2 node or link or termination-point
-           has been removed";
-      }
-      enum update {
         value 2;
         description
-          "An L2 node or link or termination-point
-           has been updated";
+          "A Layer-2 node or link or termination-point
+           has been updated.";
       }
     }
     description
-      "l2 network event type for notifications";
+      "Layer-2 network event type for notifications.";
   }
 
   // l2-topology-event-type
@@ -555,13 +540,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
   // negotiation mode
   /*
 
-
-
-Dong, et al.             Expires April 17, 2020                [Page 10]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
    * Features
    */
 
@@ -576,6 +554,13 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       "Indicates that the system supports the
        qinq functions (also known as IEEE 802.1ad double tag)";
   }
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 10]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
 
   feature VXLAN {
     description
@@ -610,14 +595,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       "Native Ethernet encapsulation.";
   }
 
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 11]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
   identity vlan {
     base eth-encapsulation-type;
     description
@@ -633,6 +610,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
   identity pbb {
     base eth-encapsulation-type;
     description
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 11]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
       "Provider-backbone-bridging (PBB) encapsulation.
        The PBB functions are developed in IEEE 802.1ah.";
   }
@@ -666,14 +651,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       presence "indicates L2 Network";
       description
         "The presence of the container node indicates
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 12]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
          L2 Topology.";
     }
   }
@@ -689,6 +666,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
         description
           "Name of the L2 network.";
       }
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 12]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
       leaf-list flag {
         type l2-flag-type;
         description
@@ -722,14 +707,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
         type yang:mac-address;
         description
           "System MAC-address.";
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 13]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
       }
       leaf management-vid {
         if-feature "VLAN";
@@ -744,6 +721,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       }
     }
   }
+
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 13]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
 
   // grouping l2-node-attributes
 
@@ -778,14 +763,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
           "Link delay in microseconds.";
       }
       leaf-list srlg {
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 14]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
         type uint32;
         description
           "List of Shared Risk Link Groups
@@ -801,6 +778,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
   // grouping l2-link-attributes
 
   grouping l2-termination-point-attributes {
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 14]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
     description
       "L2 termination point attributes";
     container l2-termination-point-attributes {
@@ -834,14 +819,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
               base eth-encapsulation-type;
             }
             description
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 15]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
               "Encapsulation type of this
                termination point.";
           }
@@ -857,6 +834,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
                 "Relevant only when the lag interface is supported.";
             }
             type leafref {
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 15]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
               path "/nw:networks/nw:network/nw:node/nt:termination-point/nt:tp-id";
             }
             description
@@ -890,14 +875,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
             if-feature "VLAN";
             key "vlan-id";
             description
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 16]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
               "Interface configured VLANs.";
             leaf vlan-id {
               type dot1q-types:vlanid;
@@ -913,6 +890,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
             }
           }
           list qinq {
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 16]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
             when "derived-from-or-self(../eth-encapsulation, 'l2t:qinq')" {
               description
                 "Only applies when the type of the Ethernet
@@ -946,14 +931,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
                 "VXLAN Network Identifier (VNI).";
             }
             description
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 17]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
               "vxlan.";
           }
         }
@@ -969,6 +946,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
               base ift:iana-interface-type;
             }
             description
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 17]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
               "Other legacy encapsulation type of this
                termination point.";
           }
@@ -1002,14 +987,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
         config false;
         description
           "State of the termination point.";
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 18]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
       }
     }
   }
@@ -1025,6 +1002,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
     uses l2-network-type;
   }
   augment "/nw:networks/nw:network" {
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 18]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
     when '/nw:networks/nw:network/nw:network-types/l2t:l2-network' {
       description
         "Augmentation parameters apply only for networks
@@ -1058,14 +1043,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
   }
   augment "/nw:networks/nw:network/nw:node/nt:termination-point" {
     when '/nw:networks/nw:network/nw:network-types/l2t:l2-network' {
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 19]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
       description
         "Augmentation parameters apply only for networks
          with L2 topology.";
@@ -1081,6 +1058,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
   notification l2-node-event {
     description
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 19]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
       "Notification event for L2 node.";
     leaf event-type {
       type l2-network-event-type;
@@ -1114,14 +1099,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
         "Event type.";
     }
     uses nt:tp-ref;
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 20]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
     uses l2-network-type;
     uses l2-termination-point-attributes;
   }
@@ -1129,10 +1106,21 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
 <CODE ENDS>
 
-6.  IANA Considerations
+5.  IANA Considerations
 
    This document requests IANA to register the following URIs in the
    "ns" subregistry within the "IETF XML Registry" [RFC3688]:
+
+
+
+
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 20]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
 
       URI: urn:ietf:params:xml:ns:yang:ietf-l2-topology
       Registrant Contact: The IESG.
@@ -1158,7 +1146,7 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
    These modules are not maintained by IANA.
 
-7.  Security Considerations
+6.  Security Considerations
 
    The YANG module specified in this document defines a schema for data
    that is designed to be accessed via network management protocols such
@@ -1170,14 +1158,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
    The Network Configuration Access Control Model (NACM) [RFC8341]
    provides the means to restrict access for particular NETCONF or
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 21]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
    RESTCONF users to a preconfigured subset of all available NETCONF or
    RESTCONF protocol operations and content.
 
@@ -1190,6 +1170,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
    The Layer 2 topology module define information that can be
    configurable in certain instances, for example in the case of virtual
    topologies that can be created by client applications.  In such
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 21]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
    cases, a malicious client could introduce topologies that are
    undesired.  Specifically, a malicious client could attempt to remove
    or add a node, a link, a termination point, by creating or deleting
@@ -1224,6 +1212,18 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       the configuration of important link attributes, such as the rate
       or the delay data nodes.
 
+   o  l2-termination-point-attributes: A malicious client could attempt
+      to sabotage the configuration of important termination point
+      attributes, such as the maximum-frame-size.
+
+7.  Acknowledgements
+
+   The authors would like to acknowledge the comments and suggestions
+   received from Susan Hares, Alia Atlas, Juergen Schoenwaelder, Mach
+   Chen, Alexander Clemm, Sriganesh Kini, and Oscar Gonzalez de Dios.
+
+
+
 
 
 
@@ -1234,19 +1234,9 @@ Dong, et al.             Expires April 17, 2020                [Page 22]
 Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
 
-   o  l2-termination-point-attributes: A malicious client could attempt
-      to sabotage the configuration of important termination point
-      attributes, such as the maximum-frame-size.
+8.  References
 
-8.  Acknowledgements
-
-   The authors would like to acknowledge the comments and suggestions
-   received from Susan Hares, Alia Atlas, Juergen Schoenwaelder, Mach
-   Chen, Alexander Clemm, Sriganesh Kini, and Oscar Gonzalez de Dios.
-
-9.  References
-
-9.1.  Normative References
+8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1282,14 +1272,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
               Specification", RFC 6325, DOI 10.17487/RFC6325, July 2011,
               <https://www.rfc-editor.org/info/rfc6325>.
 
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 23]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
    [RFC6326]  Eastlake, D., Banerjee, A., Dutt, D., Perlman, R., and A.
               Ghanwani, "Transparent Interconnection of Lots of Links
               (TRILL) Use of IS-IS", RFC 6326, DOI 10.17487/RFC6326,
@@ -1298,6 +1280,15 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
    [RFC6991]  Schoenwaelder, J., Ed., "Common YANG Data Types",
               RFC 6991, DOI 10.17487/RFC6991, July 2013,
               <https://www.rfc-editor.org/info/rfc6991>.
+
+
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 23]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
 
    [RFC7224]  Bjorklund, M., "IANA Interface Type YANG Module",
               RFC 7224, DOI 10.17487/RFC7224, May 2014,
@@ -1336,17 +1327,7 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
               Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
               <https://www.rfc-editor.org/info/rfc8446>.
 
-
-
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 24]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
-9.2.  Informative References
+8.2.  Informative References
 
    [I-D.ietf-trill-yang]
               Weiguo, H., Yizhou, L., Kumar, D., Durrani, M., Zhai, H.,
@@ -1356,6 +1337,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
    [IEEE802.1AB]
               "Station and Media Access Control Connectivity Discovery",
               IEEE Std 802.1AB-2016, March 2016.
+
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 24]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
 
    [IEEE802.1ad]
               "Virtual Bridged Local Area Networks Amendment 4: Provider
@@ -1392,6 +1381,17 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
               <https://www.rfc-editor.org/info/rfc8040>.
 
+   [RFC8340]  Bjorklund, M. and L. Berger, Ed., "YANG Tree Diagrams",
+              BCP 215, RFC 8340, DOI 10.17487/RFC8340, March 2018,
+              <https://www.rfc-editor.org/info/rfc8340>.
+
+   [RFC8342]  Bjorklund, M., Schoenwaelder, J., Shafer, P., Watsen, K.,
+              and R. Wilton, "Network Management Datastore Architecture
+              (NMDA)", RFC 8342, DOI 10.17487/RFC8342, March 2018,
+              <https://www.rfc-editor.org/info/rfc8342>.
+
+
+
 
 
 
@@ -1401,15 +1401,6 @@ Dong, et al.             Expires April 17, 2020                [Page 25]
 
 Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
-
-   [RFC8340]  Bjorklund, M. and L. Berger, Ed., "YANG Tree Diagrams",
-              BCP 215, RFC 8340, DOI 10.17487/RFC8340, March 2018,
-              <https://www.rfc-editor.org/info/rfc8340>.
-
-   [RFC8342]  Bjorklund, M., Schoenwaelder, J., Shafer, P., Watsen, K.,
-              and R. Wilton, "Network Management Datastore Architecture
-              (NMDA)", RFC 8342, DOI 10.17487/RFC8342, March 2018,
-              <https://www.rfc-editor.org/info/rfc8342>.
 
 Appendix A.  Companion YANG Module for Non-NMDA Compliant
              Implementations
@@ -1450,14 +1441,6 @@ module ietf-l2-topology-state {
     import ietf-network-state {
       prefix "nw-s";
       reference
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 26]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
         "RFC 8345: A YANG Data Model for Network Topologies";
     }
 
@@ -1466,6 +1449,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       reference
         "RFC 8345: A YANG Data Model for Network Topologies";
     }
+
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 26]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
 
     import ietf-l2-topology {
       prefix "l2t";
@@ -1506,14 +1497,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
        Redistribution and use in source and binary forms, with or
        without modification, is permitted pursuant to, and subject
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 27]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
        to the license terms contained in, the Simplified BSD License
        set forth in Section 4.c of the IETF Trust's Legal Provisions
        Relating to IETF Documents
@@ -1522,6 +1505,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
        This version of this YANG module is part of
        RFC XXXX: A YANG Data Model for Layer-2 Network Topologies
        see the RFC itself for full legal notices.";
+
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 27]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
 
     revision "2019-06-04" {
       description "Initial revision";
@@ -1562,14 +1553,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       uses l2t:l2-node-attributes;
     }
 
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 28]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
     augment "/nw-s:networks/nw-s:network/nt-s:link" {
       when "../nw-s:network-types/l2t-s:l2-network" {
         description
@@ -1579,6 +1562,13 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       description "Augments L2 topology link information.";
       uses l2t:l2-link-attributes;
     }
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 28]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
 
     augment "/nw-s:networks/nw-s:network/nw-s:node/"+
       "nt-s:termination-point" {
@@ -1618,14 +1608,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       uses l2t:l2-link-attributes;
     }
 
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 29]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
     notification l2-termination-point-event {
       description "Notification event for L2 termination point.";
       leaf event-type {
@@ -1636,6 +1618,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
       uses l2t:l2-network-type;
       uses l2t:l2-termination-point-attributes;
     }
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 29]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
 }  // module l2-topology-state
 <CODE ENDS>
 
@@ -1673,15 +1663,6 @@ Appendix B.  An Example
 
                       Figure 2. A Network Topology Example
 
-
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 30]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
    The corresponding instance data tree is depicted as below.  Note that
    some lines have been wrapped to adhere to the 72-character line
    limitation of RFCs.
@@ -1693,6 +1674,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
               "network-types": {
                 "ietf-l2-topology:l2-network": {}
               },
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 30]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
               "network-id": "l2-topo-example",
               "node": [
                 {
@@ -1730,14 +1719,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
                     {
                       "tp-id": "2-0-1",
                       "ietf-l2-topology:
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 31]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
                         l2-termination-point-attributes": {
                         "mac-address": "00-00-5E-00-53-E0"
                       }
@@ -1749,6 +1730,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
                         "mac-address": "00-00-5E-00-53-E1"
                       }
                     },
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 31]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
                     {
                       "tp-id": "2-3-1",
                       "ietf-l2-topology:
@@ -1786,14 +1775,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
               ],
               "ietf-network-topology:link": [
                 {
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 32]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
                   "link-id": "D1,1-2-1,D2,2-1-1",
                   "source": {
                     "source-node": "D1",
@@ -1805,6 +1786,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
                   },
                   "ietf-l2-topology:l2-link-attributes": {
                     "rate": "1000"
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 32]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
                   }
                 },
                 {
@@ -1842,14 +1831,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
                     "source-tp": "3-1-1"
                   }
                   "destination": {
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 33]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
                     "dest-node": "D1",
                     "dest-tp": "1-3-1"
                   },
@@ -1861,6 +1842,14 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
                   "link-id": "D2,2-3-1,D3,3-2-1",
                   "source": {
                     "source-node": "D2",
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 33]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
+
+
                     "source-tp": "2-3-1"
                   }
                   "destination": {
@@ -1893,19 +1882,6 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
 Authors' Addresses
 
-
-
-
-
-
-
-
-
-Dong, et al.             Expires April 17, 2020                [Page 34]
-
-Internet-Draft     Layer-2 Network Topology Data Model      October 2019
-
-
    Jie Dong
    Huawei
    Huawei Campus, No. 156 Beiqing Rd.
@@ -1922,6 +1898,12 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
    China
 
    Email: weixiugang@huawei.com
+
+
+
+Dong, et al.             Expires April 17, 2020                [Page 34]
+
+Internet-Draft     Layer-2 Network Topology Data Model      October 2019
 
 
    Qin Wu
@@ -1948,6 +1930,24 @@ Internet-Draft     Layer-2 Network Topology Data Model      October 2019
    China
 
    Email: andersliu@tencent.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
