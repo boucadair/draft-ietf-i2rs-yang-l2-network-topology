@@ -13,7 +13,7 @@
 <rfc category="std" docName="draft-ietf-i2rs-yang-l2-network-topology-14"
      ipr="trust200902">
   <front>
-    <title abbrev="Layer-2 Network Topology Data Model">A YANG Data Model for
+    <title abbrev="Layer 2 Network Topology Data Model">A YANG Data Model for
     Layer 2 Network Topologies</title>
 
     <author fullname="Jie Dong" initials="J." surname="Dong">
@@ -106,7 +106,9 @@
 
     <abstract>
       <t>This document defines a YANG data model for Layer 2 network
-      topologies.</t>
+      topologies. In particular, this data model augments the generic network
+      and network topology data models with Layer 2 specific topology
+      attributes.</t>
     </abstract>
 
     <note title="Editorial Note (To be removed by RFC Editor)">
@@ -135,8 +137,7 @@
       topologies by augmenting the generic network (Section 6.1 of <xref
       target="RFC8345"></xref>) and network topology (Section 6.2 of <xref
       target="RFC8345"></xref>) data models with L2-specific topology
-      attributes. A sample example is provided in <xref
-      target="ex"></xref>.</t>
+      attributes. An example is provided in <xref target="ex"></xref>.</t>
 
       <t>This document uses the common YANG types defined in <xref
       target="RFC6991"></xref> and adopts the Network Management Datastore
@@ -419,9 +420,8 @@ module ietf-l2-topology {
      Relating to IETF Documents
      (http://trustee.ietf.org/license-info).
 
-     This version of this YANG module is part of
-     RFC XXXX: A YANG Data Model for Layer 2 Network Topologies
-     see the RFC itself for full legal notices.";
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
 
   revision 2020-06-22 {
     description
@@ -621,7 +621,7 @@ module ietf-l2-topology {
     description
       "Indicates the topology type to be L2.";
     container l2-network {
-      presence "indicates L2 Network";
+      presence "Indicates L2 Network";
       description
         "The presence of the container node indicates
          L2 Topology.";
@@ -775,7 +775,7 @@ module ietf-l2-topology {
             type boolean;
             default "false";
             description
-              "Defines whether lag is support or not.";
+              "Defines whether lag is supported or not.";
           }
           leaf-list member-link-tp {
             when "../lag = 'true'" {
@@ -1083,7 +1083,7 @@ module ietf-l2-topology {
       access to clients, they are less vulnerable. That said, the YANG module
       does in principle allow information to be configurable.</t>
 
-      <t>The Layer 2 topology module define information that can be
+      <t>The Layer 2 topology module defines information that can be
       configurable in certain instances, for example in the case of virtual
       topologies that can be created by client applications. In such cases, a
       malicious client could introduce topologies that are undesired.
@@ -1129,7 +1129,8 @@ module ietf-l2-topology {
     <section title="Acknowledgements">
       <t>The authors would like to acknowledge the comments and suggestions
       received from Susan Hares, Alia Atlas, Juergen Schoenwaelder, Mach Chen,
-      Alexander Clemm, Sriganesh Kini, and Oscar Gonz&aacute;lez de Dios.</t>
+      Alexander Clemm, Sriganesh Kini, Oscar Gonz&aacute;lez de Dios, and Stig
+      Venaas.</t>
 
       <t>Many thanks to Ladislav Lhotka for the yang-doctors review.</t>
     </section>
@@ -1255,7 +1256,7 @@ module ietf-l2-topology {
 
       <t>In order to be able to use the model for layer 2 topologies defined
       in this document in conjunction with non-NMDA compliant implementations,
-      a corresponding companion module is defined that represent the
+      a corresponding companion module is defined that represents the
       operational state of layer 2 network topologies. The module
       'ietf-l2-topology-state' mirrors the module 'ietf-l2-topology' defined
       earlier in this document. However, it augments 'ietf-network-state' and
@@ -1321,19 +1322,18 @@ module ietf-l2-topology-state {
       underlying implementation infrastructure supports the
       Network Management Datastore Architecture (NMDA).
 
-      Copyright (c) 2020 IETF Trust and the persons identified as
-      authors of the code.  All rights reserved.
+     Copyright (c) 2020 IETF Trust and the persons identified as
+     authors of the code.  All rights reserved.
 
-      Redistribution and use in source and binary forms, with or
-      without modification, is permitted pursuant to, and subject
-      to the license terms contained in, the Simplified BSD License
-      set forth in Section 4.c of the IETF Trust's Legal Provisions
-      Relating to IETF Documents
-      (https://trustee.ietf.org/license-info).
+     Redistribution and use in source and binary forms, with or
+     without modification, is permitted pursuant to, and subject
+     to the license terms contained in, the Simplified BSD License
+     set forth in Section 4.c of the IETF Trust's Legal Provisions
+     Relating to IETF Documents
+     (http://trustee.ietf.org/license-info).
 
-     This version of this YANG module is part of
-     RFC XXXX: A YANG Data Model for Layer 2 Network Topologies
-     see the RFC itself for full legal notices.";
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
 
   revision 2020-06-22 {
     description
