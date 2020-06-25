@@ -1105,8 +1105,7 @@ module ietf-l2-topology {
       network environments. Write operations (e.g., edit-config) to these data
       nodes without proper protection can have a negative effect on network
       operations. These are the subtrees and data nodes and their
-      sensitivity/vulnerability in the 'ietf-network' module:<list
-          style="symbols">
+      sensitivity/vulnerability:<list style="symbols">
           <t>l2-network-attributes: A malicious client could attempt to
           sabotage the configuration of any of the contained attributes, such
           as the name or the flag data nodes.</t>
@@ -1131,6 +1130,8 @@ module ietf-l2-topology {
       <t>The authors would like to acknowledge the comments and suggestions
       received from Susan Hares, Alia Atlas, Juergen Schoenwaelder, Mach Chen,
       Alexander Clemm, Sriganesh Kini, and Oscar Gonz&aacute;lez de Dios.</t>
+
+      <t>Many thanks to Ladislav Lhotka for the yang-doctors review.</t>
     </section>
   </middle>
 
@@ -1482,7 +1483,7 @@ module ietf-l2-topology-state {
                    Figure 2. A Network Topology Example]]></artwork>
         </figure></t>
 
-      <t>The corresponding instance data tree is depicted below: </t>
+      <t>The corresponding instance data tree is depicted below:</t>
 
       <t><figure>
           <artwork><![CDATA[ {
@@ -1496,23 +1497,23 @@ module ietf-l2-topology-state {
         "node": [
           {
             "node-id": "D1",
-            "termination-point": [
+            "ietf-network-topology:termination-point": [
               {
                 "tp-id": "1-0-1",
                 "ietf-l2-topology:l2-termination-point-attributes": {
-                  "mac-address": "00-00-5E-00-53-D0"
+                  "mac-address": "00:00:5E:00:53:D0"
                 }
               },
               {
                 "tp-id": "1-2-1",
                 "ietf-l2-topology:l2-termination-point-attributes": {
-                  "mac-address": "00-00-5E-00-53-D1"
+                  "mac-address": "00:00:5E:00:53:D1"
                 }
               },
               {
                 "tp-id": "1-3-1",
                 "ietf-l2-topology:l2-termination-point-attributes": {
-                  "mac-address": "00-00-5E-00-53-D2"
+                  "mac-address": "00:00:5E:00:53:D2"
                 }
               }
             ],
@@ -1524,23 +1525,23 @@ module ietf-l2-topology-state {
           },
           {
             "node-id": "D2",
-            "termination-point": [
+            "ietf-network-topology:termination-point": [
               {
                 "tp-id": "2-0-1",
                 "ietf-l2-topology:l2-termination-point-attributes": {
-                  "mac-address": "00-00-5E-00-53-E0"
+                  "mac-address": "00:00:5E:00:53:E0"
                 }
               },
               {
                 "tp-id": "2-1-1",
                 "ietf-l2-topology:l2-termination-point-attributes": {
-                  "mac-address": "00-00-5E-00-53-E1"
+                  "mac-address": "00:00:5E:00:53:E1"
                 }
               },
               {
                 "tp-id": "2-3-1",
                 "ietf-l2-topology:l2-termination-point-attributes": {
-                  "mac-address": "00-00-5E-00-53-E2"
+                  "mac-address": "00:00:5E:00:53:E2"
                 }
               }
             ],
@@ -1552,17 +1553,17 @@ module ietf-l2-topology-state {
           },
           {
             "node-id": "D3",
-            "termination-point": [
+            "ietf-network-topology:termination-point": [
               {
                 "tp-id": "3-1-1",
                 "ietf-l2-topology:l2-termination-point-attributes": {
-                  "mac-address": "00-00-5E-00-53-F0"
+                  "mac-address": "00:00:5E:00:53:F0"
                 }
               },
               {
                 "tp-id": "3-2-1",
                 "ietf-l2-topology:l2-termination-point-attributes": {
-                  "mac-address": "00-00-5E-00-53-F1"
+                  "mac-address": "00:00:5E:00:53:F1"
                 }
               }
             ],
