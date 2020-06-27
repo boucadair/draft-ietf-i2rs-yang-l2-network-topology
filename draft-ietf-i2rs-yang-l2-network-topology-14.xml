@@ -1077,12 +1077,6 @@ module ietf-l2-topology {
       particular NETCONF or RESTCONF users to a preconfigured subset of all
       available NETCONF or RESTCONF protocol operations and content.</t>
 
-      <t>In general, Layer 2 network topologies are system-controlled and
-      provide ephemeral topology information. In an NMDA-complient server,
-      they are only part of &lt;operational&gt; which provides read-only
-      access to clients, they are less vulnerable. That said, the YANG module
-      does in principle allow information to be configurable.</t>
-
       <t>The Layer 2 topology module defines information that can be
       configurable in certain instances, for example in the case of virtual
       topologies that can be created by client applications. In such cases, a
@@ -1123,14 +1117,23 @@ module ietf-l2-topology {
           attributes (e.g., 'maximum-frame-size').</t>
         </list></t>
 
-      <t></t>
+      <t>Some of the readable data nodes in this YANG module may be considered
+      sensitive or vulnerable in some network environments. It is thus
+      important to control read access (e.g., via get, get-config, or
+      notification) to these data nodes. In particular, the YANG model for
+      layer 2 topology may expose sensitive information, for example the MAC
+      addresses of devices. Unrestricted use of such information can lead to
+      privacy violations. For example, listing MAC addresses in a network
+      allows monitoring of devices and their movements. Location information
+      can be derived from MAC addresses of network devices, bypassing
+      protection of location information by the Operating System. </t>
     </section>
 
     <section title="Acknowledgements">
       <t>The authors would like to acknowledge the comments and suggestions
       received from Susan Hares, Alia Atlas, Juergen Schoenwaelder, Mach Chen,
-      Alexander Clemm, Sriganesh Kini, Oscar Gonz&aacute;lez de Dios, and Stig
-      Venaas.</t>
+      Alexander Clemm, Sriganesh Kini, Oscar Gonz&aacute;lez de Dios, Stig
+      Venaas, Christian Huitema, and Meral Shirazipour.</t>
 
       <t>Many thanks to Ladislav Lhotka for the yang-doctors review.</t>
     </section>

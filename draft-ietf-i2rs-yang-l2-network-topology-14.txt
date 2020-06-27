@@ -5,12 +5,12 @@
 Network Working Group                                            J. Dong
 Internet-Draft                                                    X. Wei
 Intended status: Standards Track                                   Q. Wu
-Expires: December 27, 2020                                        Huawei
+Expires: December 29, 2020                                        Huawei
                                                             M. Boucadair
                                                                   Orange
                                                                   A. Liu
                                                                   Tecent
-                                                           June 25, 2020
+                                                           June 27, 2020
 
 
             A YANG Data Model for Layer 2 Network Topologies
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Dong, et al.            Expires December 27, 2020               [Page 1]
+Dong, et al.            Expires December 29, 2020               [Page 1]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
-   This Internet-Draft will expire on December 27, 2020.
+   This Internet-Draft will expire on December 29, 2020.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Dong, et al.            Expires December 27, 2020               [Page 2]
+Dong, et al.            Expires December 29, 2020               [Page 2]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -165,7 +165,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020               [Page 3]
+Dong, et al.            Expires December 29, 2020               [Page 3]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -221,7 +221,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020               [Page 4]
+Dong, et al.            Expires December 29, 2020               [Page 4]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -277,7 +277,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020               [Page 5]
+Dong, et al.            Expires December 29, 2020               [Page 5]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -333,7 +333,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020               [Page 6]
+Dong, et al.            Expires December 29, 2020               [Page 6]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -389,7 +389,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020               [Page 7]
+Dong, et al.            Expires December 29, 2020               [Page 7]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -445,7 +445,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020               [Page 8]
+Dong, et al.            Expires December 29, 2020               [Page 8]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -501,7 +501,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020               [Page 9]
+Dong, et al.            Expires December 29, 2020               [Page 9]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -557,7 +557,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 10]
+Dong, et al.            Expires December 29, 2020              [Page 10]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -613,7 +613,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 11]
+Dong, et al.            Expires December 29, 2020              [Page 11]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -669,7 +669,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 12]
+Dong, et al.            Expires December 29, 2020              [Page 12]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -725,7 +725,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 13]
+Dong, et al.            Expires December 29, 2020              [Page 13]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -781,7 +781,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 14]
+Dong, et al.            Expires December 29, 2020              [Page 14]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -837,7 +837,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 15]
+Dong, et al.            Expires December 29, 2020              [Page 15]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -893,7 +893,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 16]
+Dong, et al.            Expires December 29, 2020              [Page 16]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -949,7 +949,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 17]
+Dong, et al.            Expires December 29, 2020              [Page 17]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1005,7 +1005,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 18]
+Dong, et al.            Expires December 29, 2020              [Page 18]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1061,7 +1061,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 19]
+Dong, et al.            Expires December 29, 2020              [Page 19]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1117,7 +1117,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 20]
+Dong, et al.            Expires December 29, 2020              [Page 20]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1173,7 +1173,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 21]
+Dong, et al.            Expires December 29, 2020              [Page 21]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1205,12 +1205,6 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
    RESTCONF users to a preconfigured subset of all available NETCONF or
    RESTCONF protocol operations and content.
 
-   In general, Layer 2 network topologies are system-controlled and
-   provide ephemeral topology information.  In an NMDA-complient server,
-   they are only part of <operational> which provides read-only access
-   to clients, they are less vulnerable.  That said, the YANG module
-   does in principle allow information to be configurable.
-
    The Layer 2 topology module defines information that can be
    configurable in certain instances, for example in the case of virtual
    topologies that can be created by client applications.  In such
@@ -1225,15 +1219,6 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
    reflected in the operational state datastore, leading to disruption
    of services provided via this topology might be disrupted.  For those
    reasons, it is important that the NETCONF access control model is
-
-
-
-
-Dong, et al.            Expires December 27, 2020              [Page 22]
-
-Internet-Draft     Layer 2 Network Topology Data Model         June 2020
-
-
    vigorously applied to prevent topology misconfiguration by
    unauthorized clients.
 
@@ -1241,6 +1226,14 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
    writable/creatable/deletable (i.e., config true, which is the
    default).  These data nodes may be considered sensitive or vulnerable
    in some network environments.  Write operations (e.g., edit-config)
+
+
+
+Dong, et al.            Expires December 29, 2020              [Page 22]
+
+Internet-Draft     Layer 2 Network Topology Data Model         June 2020
+
+
    to these data nodes without proper protection can have a negative
    effect on network operations.  These are the subtrees and data nodes
    and their sensitivity/vulnerability:
@@ -1261,12 +1254,23 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
       to sabotage the configuration of important termination point
       attributes (e.g., 'maximum-frame-size').
 
+   Some of the readable data nodes in this YANG module may be considered
+   sensitive or vulnerable in some network environments.  It is thus
+   important to control read access (e.g., via get, get-config, or
+   notification) to these data nodes.  In particular, the YANG model for
+   layer 2 topology may expose sensitive information, for example the
+   MAC addresses of devices.  Unrestricted use of such information can
+   lead to privacy violations.  For example, listing MAC addresses in a
+   network allows monitoring of devices and their movements.  Location
+   information can be derived from MAC addresses of network devices,
+   bypassing protection of location information by the Operating System.
+
 7.  Acknowledgements
 
    The authors would like to acknowledge the comments and suggestions
    received from Susan Hares, Alia Atlas, Juergen Schoenwaelder, Mach
-   Chen, Alexander Clemm, Sriganesh Kini, Oscar Gonzalez de Dios, and
-   Stig Venaas.
+   Chen, Alexander Clemm, Sriganesh Kini, Oscar Gonzalez de Dios, Stig
+   Venaas, Christian Huitema, and Meral Shirazipour.
 
    Many thanks to Ladislav Lhotka for the yang-doctors review.
 
@@ -1279,16 +1283,16 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
-              DOI 10.17487/RFC3688, January 2004,
-              <https://www.rfc-editor.org/info/rfc3688>.
 
 
-
-Dong, et al.            Expires December 27, 2020              [Page 23]
+Dong, et al.            Expires December 29, 2020              [Page 23]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
+
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              DOI 10.17487/RFC3688, January 2004,
+              <https://www.rfc-editor.org/info/rfc3688>.
 
    [RFC4202]  Kompella, K., Ed. and Y. Rekhter, Ed., "Routing Extensions
               in Support of Generalized Multi-Protocol Label Switching
@@ -1337,11 +1341,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-
-
-
-
-Dong, et al.            Expires December 27, 2020              [Page 24]
+Dong, et al.            Expires December 29, 2020              [Page 24]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1397,7 +1397,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 25]
+Dong, et al.            Expires December 29, 2020              [Page 25]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1453,7 +1453,7 @@ Appendix A.  Companion YANG Module for Non-NMDA Compliant
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 26]
+Dong, et al.            Expires December 29, 2020              [Page 26]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1509,7 +1509,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 27]
+Dong, et al.            Expires December 29, 2020              [Page 27]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1565,7 +1565,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 28]
+Dong, et al.            Expires December 29, 2020              [Page 28]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1621,7 +1621,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 29]
+Dong, et al.            Expires December 29, 2020              [Page 29]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1677,7 +1677,7 @@ Appendix B.  An Example
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 30]
+Dong, et al.            Expires December 29, 2020              [Page 30]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1733,7 +1733,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 31]
+Dong, et al.            Expires December 29, 2020              [Page 31]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1789,7 +1789,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 32]
+Dong, et al.            Expires December 29, 2020              [Page 32]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1845,7 +1845,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 33]
+Dong, et al.            Expires December 29, 2020              [Page 33]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1901,7 +1901,7 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 34]
+Dong, et al.            Expires December 29, 2020              [Page 34]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -1957,7 +1957,7 @@ Authors' Addresses
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 35]
+Dong, et al.            Expires December 29, 2020              [Page 35]
 
 Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
@@ -2013,4 +2013,4 @@ Internet-Draft     Layer 2 Network Topology Data Model         June 2020
 
 
 
-Dong, et al.            Expires December 27, 2020              [Page 36]
+Dong, et al.            Expires December 29, 2020              [Page 36]
